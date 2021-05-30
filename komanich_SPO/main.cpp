@@ -1093,38 +1093,30 @@ struct TestConfig {
 
 int main(int argc, char** argv) {
     std::vector<TestConfig> tests = {
-//        {"if (2 == 2) { print(1); }", true, true, true, true, false},
-//      {"a = a + b;", true},
-//      {"a = (a + b);", true},
-//    {"if (5 < 6) {a = 7 + b;}", true,true, true, true, true},
-//     {"a = (3 *((((a + 2)))));", true, true, true, true, true},
-     {"b = 5; while( b > 3) {b = b - 1;}", true, true, true, true, true},
-        {"\n  x = new LinkedList;\n"
-         "  add(x, 4);\n"
-         "  add(x, 67);\n"
-         "  add(x, 5);\n"
-         "  y = get(x, 2);\n"
-         "  print(y);\n",
-         false,
-         false,
-         false,
-         false,
-         true},
-        {"x = new HashTable; set(x, 4, 99); set(x, 6, 25); y = "
-         "receive(x, 6); ",
-         true,
-         true,
-         true,
-         true,
-         true},
-        {"z = new LinkedList; add(z, 4); add(z, 67); add(z, 5); q = "
-         "get(z, 1);",
-         false,
-         false,
-         false,
-         false,
-         true}
-    };
+
+    {"x = 10; a = (3 *(((((x / 2))))));", true, true, true, true, true},
+
+    {"num = 5; while(num < 7) {num = num + 1;}", true, true, true, true, true},
+
+    {"x = 15; y = 18; "
+     "if (x == y) { print(1); } else { print(0); }", true, true, true, true, true},
+
+    {"x = new LinkedList;\n"
+        "\tadd(x, 69);\n"
+        "\tadd(x, 13);\n"
+        "\tadd(x, 5);\n"
+        "\ty = get(x, 2);\n"
+        "\tprint(y);",
+         true, true, true, true, true},
+
+    {"x = new HashTable; \n"
+       "\tset(x, 5, 99); \n"
+       "\tset(x, 0, 99); \n"
+       "\tset(x, 9, 33); \n"
+       "\tset(x, 8, 19); \n"
+       "\ty = receive(x, 9);",
+        true, true, true, true, true},
+};
 
     for (
         const auto& [code, printAst, printLex, printPolish, printEval, printResult] :
